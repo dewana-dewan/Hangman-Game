@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hangman</title>
+<style type="text/css">
+body{
+	font-family: 'Source Sans Pro', sans-serif;
+	background-repeat: no-repeat;
+	background-size:40%;
+	background-position: top center;
+	height:100%;
+	background-image:;
+	font-weight: bold;
+	font-size: 120%;
+	transition: all .4s ease-in-out;
+}
+h1{
+	font-size:700%;
+	width: 100%;
+	
+	color: black;
+
+}
+#wana{
+	display: block;
+	height:300px;
+	width:auto;
+	border-radius: 20px;
+	border:4px solid black;
+	box-shadow: 4px  4px 4px #444;
+	cursor:pointer;]
+	transition:all 1s;
+}
+#wana:hover{
+	height:350px;
+	width:auto;
+	border-radius: 20px;
+	border:4px solid black;
+	box-shadow: 6px  6px 6px #444;
+	cursor:pointer;
+	transition:all 1s;
+}
+#muvis{
+	display: none;
+}
+#c1 , #c2 , #c3 , #c4 , #c5 , #c6 , #c7 , #c8 , #c9 , #c0{
+	
+	display: inline-block;
+	font-family: "Comic Sans MS";
+	font-size:300%;
+}
+#a,#b,#c,#d,#e,#f,#g,#h,#i,#j,#k,#l,#m,#n,#o,#p,#q,#r,#s,#t,#u,#v,#w,#x,#y,#z{
+	cursor: pointer;
+	padding: 4px;
+	margin: 5px;
+	display: inline-block;
+	font-family: "Comic Sans MS";
+	font-size: 130%;
+	font-weight:200;
+	transtion:all .3s;
+}
+h1{
+	margin: 20px;
+	font-size:700%;
+	width: 96%;
+	background-color: rgba(0,0,0,.6); 
+	color:white;
+	transition:color .4s, background-color.4s;
+}
+h2{
+	margin: 20px;
+	background-color: rgba(0,0,0,.4); 
+	color: white;
+	transition:color .4s, background-color.4s;
+	font-size:500%;
+}
+h3{
+	
+	background-color: rgba(0,0,0,.1); 
+	color: white;
+	transition:color .4s, background-color.4s;
+	font-size:200%;
+}
+
+
+#start{
+	width:40%;
+	color:white;
+	background-color: rgba(0, 0, 0,.8);
+	border:0;
+	font-size: 200%;
+	font-weight: bold;
+	transition:all .5s;
+}
+#start:hover{
+	width:50%;
+	border:1px solid rgba(0,0,0,.6);
+	color:rgba(0,0,0,.6);
+	background-color: white;
+	cursor: pointer;
+	box-shadow: ;
+	border-radius: 6px;
+	transition:all .5s;
+
+}
+
+#lives{
+	position: relative;
+
+	margin: 40px;
+}
+#input{
+	display: none;
+	position: absolute;
+	bottom: 10%;
+	left:46%;
+
+}
+#in_char{
+	width: 70px;
+	height:40px;
+	font-size: 150%;
+	text-align: center;
+	
+	transition:box-shadow 1s;
+}
+#in_char_b{
+	font-size: 90%;
+	width:75px;
+	border:0px solid black;
+	transition:all .3s;
+
+}
+#in_char_b:hover{
+	cursor: pointer;
+	color:white;
+	background-color: rgba(0,0,0,.7);
+	transition:all .3s;
+}
+#left_g{
+	top:0;
+	position: absolute;
+	left:0;
+	float: right;
+	vertical-align: center;
+	text-align: right;
+	font-size: 400%;
+	font-weight: 300;
+	height:100%;
+	width:0%;
+	opacity: .3;
+	background-color: rgb(255,0,0);
+	transition:opacity .4s,width .7s;
+}
+#right_g{
+
+	top:0;
+	position: static;
+	right:0;
+	font-size: 400%;
+	font-weight: 300;
+	height:100%;
+	width:0%;
+	opacity: .3;
+	background-color: rgb(25,100,102);
+	transition:background-color .4s,width .7s;
+}
+th{
+	text-align: center;
+	width:;
+}
+#game{
+	background-color: rgba(255,255,255,0);
+	text-align: center;
+	font-size: 130%;
+	box-shadow: 0px 0px 0px rgba(255,255,255,.8);
+
+
+}
+#alpha{
+	width: 54%;
+
+	text-align: center;
+	border:3px solid black;
+	background-color: rgba(255,255,255,.8);
+	border-radius: 30px;	
+	box-shadow: 0px 2px 15px rgba(255,255,255,.8);
+}
+#final{
+	
+	position: absolute;
+	z-index: 100;
+	bottom: 100px;
+	
+	text-align: center;
+	left:40%;
+	width: 20%;
+
+}
+#whole{
+	display: none;
+}
+#mann_in{
+	float: left;
+	width: 75px;
+	overflow: hidden;
+}
+
+
+#mann{
+	position: relative;
+	left: 0px;
+	margin-top: 30px;
+	margin-left: 00px;
+	transition:left .3s;
+}
+#boxx{
+	width:80%;
+	background:;
+	background-image:; 
+	border:0px double black;
+	border-radius: 2%;
+	height:296px;
+	transition:all .3s;
+}
+#restart{
+	width:40%;
+	color:white;
+	background-color: rgba(0,0,0,.6);
+	border:0;
+	font-size: 200%;
+	font-weight: bold;
+	transition:all .5s;
+}
+#restart:hover{
+	width:50%;
+	border:1px solid rgba(0,0,100,.6);
+	color:rgba(0,0,100,.6);
+	background-color: white;
+	cursor: pointer;
+	box-shadow: ;
+	border-radius: 6px;
+	transition:all .5s;
+
+}
+</style>
+</head>
+<body >
+<center>
+<div id="headi">
+	<div></div>
+	<h1>HANGMAN</h1>
+</div>
+
+<div id="final">
+
+</div>
+<div id='muvis'>
+	<p id="m1">tangled</p>
+	<p id="m2">frozen</p>
+	<p id="m3">hop</p>
+	<p id="m4">up</p>
+	<p id="m5">cars</p>
+	<p id="m6">wanted</p>
+	<p id="m7">holes</p>
+	<p id="m8">vertigo</p>
+	<p id="m9">twins</p>
+	<p id="m10">taken</p>
+</div>		
+
+	<input id="start" type="button" value="Wanna Play!!" onclick="rand()">
+	</center>
+	
+<div id="whole">
+
+<center>
+<div>
+<div id="left_g"></div><div id="right_g"></div>
+
+<table id="boxx">
+
+	<tr>
+		
+		<th style="width:15%; float:center ; padding :20px; margin-up:20px " >
+		<div id="mann_in">
+		<img id="mann" src="man.png" >
+		</div>
+		</th>
+		<th>
+			<div id="game"></div>
+		</th>
+		<th style="width:30%">
+			<p id="lives" style="font-size:400%">Lives:5</p>
+		</th>
+
+	</tr>
+
+</table>
+
+</div>
+<hr width="70%">
+<div id="alpha" >
+				<p id="a" onclick="linking(this.id)">A</p>&nbsp;
+				<p id="b" onclick="linking(this.id)">B</p>&nbsp;
+				<p id="c" onclick="linking(this.id)">C</p>&nbsp;
+				<p id="d" onclick="linking(this.id)">D</p>&nbsp;
+				<p id="e" onclick="linking(this.id)">E</p>&nbsp;
+				<p id="f" onclick="linking(this.id)">F</p>&nbsp;
+				<p id="g" onclick="linking(this.id)">G</p>&nbsp;
+				<p id="h" onclick="linking(this.id)">H</p>&nbsp;
+				<p id="i" onclick="linking(this.id)">I</p>&nbsp;
+				<p id="j" onclick="linking(this.id)">J</p>&nbsp;
+				<p id="k" onclick="linking(this.id)">K</p>&nbsp;
+				<p id="l" onclick="linking(this.id)">L</p><br>
+				<p id="m" onclick="linking(this.id)">M</p>&nbsp;
+				<p id="n" onclick="linking(this.id)">N</p>&nbsp;
+				<p id="o" onclick="linking(this.id)">O</p>&nbsp;
+				<p id="p" onclick="linking(this.id)">P</p>&nbsp;
+				<p id="q" onclick="linking(this.id)">Q</p>&nbsp;
+				<p id="r" onclick="linking(this.id)">R</p>&nbsp;
+				<p id="s" onclick="linking(this.id)">S</p>&nbsp;
+				<p id="t" onclick="linking(this.id)">T</p>&nbsp;
+				<p id="u" onclick="linking(this.id)">U</p>&nbsp;
+				<p id="v" onclick="linking(this.id)">V</p>&nbsp;
+				<p id="w" onclick="linking(this.id)">W</p>&nbsp;
+				<p id="x" onclick="linking(this.id)">X</p>&nbsp;
+				<p id="y" onclick="linking(this.id)">Y</p>&nbsp;
+				<p id="z" onclick="linking(this.id)">Z</p>
+			</div>
+</center>
+<div id="input">
+		<form action="#" onsubmit="check()">
+			<input id="in_char" type="text" required ><br>
+			<input id="in_char_b"type="submit"  value="TRY IT!!">
+		</form>
+
+	
+
+</div>
+<center>
+<input style="display: none;" id="restart" type="button" value="Wanna Play Again!!" onclick="restar()">
+</center>
+
+<br>
+<br>
+
+</div>
+
+</div>
+</body>
+	<script>
+	//temporary variables = 'a,d,e'
+	var tex='';
+	var z;
+	var pi='';
+	var p;
+	var t;
+	var count=0;
+	var w;
+	var g;
+	var alphas;
+	var temp;
+	//vars in check
+	var inp;
+	var win_check=0;
+
+	//vars in rand
+	var a,d,e;
+	var movi_arr;
+	var movi_pre='m';
+	var movi_var=['1','2','3','4','5','6','7','8','9'];
+	var re_alpha;
+
+	re_alpha = document.getElementById("alpha").innerHTML;
+	
+	
+
+	function rand(){
+		document.getElementById('start').style.display='none';
+		document.getElementById('whole').style.display='initial';
+	   movi_pre+=movi_var[Math.floor(Math.random() * movi_var.length)];
+		console.log(movi_pre);
+		a=document.getElementById(movi_pre);
+		b=a.innerHTML;
+		movi_arr=b.split('');
+		console.log(movi_arr);
+		e=movi_arr.length;
+		console.log(e);
+		box();
+		return false;
+
+	}
+	
+	function box(){
+		var i,blanks;
+		i=e;
+		blanks=""
+		for(i=0;i<e;i++){
+			if(movi_arr[i]==' '){
+				blanks+="<div id='c"+i+"'>&nbsp;-&nbsp;</div>&nbsp;&nbsp;";
+			}
+			else{
+				blanks+="<div id='c"+i+"'>_</div>&nbsp;&nbsp;";
+			}
+		}
+		console.log(blanks);
+		g=blanks.toString();
+		document.getElementById("game").innerHTML=g;
+	}
+
+	function check(){
+		randcolor();
+		inp=document.getElementById("in_char").value;
+		p=inp.toLowerCase();
+		document.getElementById(p).style.textDecoration="line-through";
+		document.getElementById(p).style.cursor="not-allowed";
+	
+		document.getElementById(p).style.backgroundColor="rgba(0,0,0,.3)";
+		document.getElementById(p).style.borderRadius="20%";
+		var y = movi_arr.indexOf(inp);
+		if(y == -1){
+			count++;
+			chark();
+			//curtains();
+		}
+		else{
+			win_check++;
+			t='c'+y;
+			document.getElementById(t).innerHTML = inp.toUpperCase();
+		}
+		if(win_check == e){
+			document.getElementById('boxx').innerHTML='<center><h2>Whoa Kid!!!</h2><h3>You\'ve got some skills.</h3></center>'
+			document.getElementById('restart').style.display="block";
+			document.getElementById('alpha').style.display="none";
+
+		}
+		document.getElementById("in_char").value='';
+
+	}
+	function curtains(){
+		var opa=document.getElementById('left_g').style.opacity;
+		var wid=document.getElementById('left_g').style.width;
+		var tem;
+		console.log(count);
+		wid=count*8+10;
+		opa=count*.17+.2;
+		console.log(opa);
+		document.getElementById('left_g').style.width = wid + '%';
+		document.getElementById('right_g').style.width = wid + '%';
+		document.getElementById('left_g').style.opacity = opa;
+		document.getElementById('right_g').style.opacity = opa;	
+
+		if(opa >= 1){
+
+			setTimeout(go_home , 900);
+		} 
+
+	}
+
+	function go_home(){
+		document.getElementById('left_g').innerHTML='Go hom ';
+		document.getElementById('right_g').innerHTML='e kid !!';
+		document.getElementById('final').innerHTML='<img style="width:100%; border:2px solid black;"  src="img7.gif">';
+	}
+
+	function chark(){
+		tex='';
+		tex="Lives:"+(6-count);
+		document.getElementById("lives").innerHTML=tex;
+		var countt;
+		countt=count;
+		document.getElementById("mann").style.left='-' + count*75 +'px';
+		if(count>5){
+			setTimeout(final,400);
+		}
+		
+	function final(){
+		document.getElementById('alpha').style.display="none";
+			document.getElementById('restart').style.display="block";
+			document.getElementById('boxx').style.backgroundImage="url('BloodSplatter.png')";
+			document.getElementById('boxx').innerHTML='<center><h2>Go Home Kid!!!</h2><h3>The Movie was <br>\"'+b.toUpperCase()+'\"</h3></center>';
+	}
+
+	}
+
+	function linking(iid){
+		console.log("sss");
+		document.getElementById('in_char').value=(document.getElementById(iid).innerHTML).toLowerCase();
+			check();
+		
+	}
+
+function randcolor(){
+	
+	var letters="ABCDE".split('');
+	var color='#';
+	for(var i=0;i<3;i++)
+	{
+		color+=letters[Math.floor(Math.random()*5)];
+	}
+document.body.style.backgroundColor=color;
+
+}
+
+
+
+
+function restar(){
+
+	document.getElementById("boxx").innerHTML = "<tr><th style=\"width:15%; float:center ; padding :20px; margin-up:20px \" ><div id=\"mann_in\"><img id=\"mann\" src=\"man.png\" ></div></th><th><div id=\"game\"></div></th><th style=\"width:30%\"><p id=\"lives\" style=\"font-size:400%\">Lives:5</p></th></tr>";
+
+	movi_pre = 'm';
+	var b_temp = "";
+	document.getElementById('alpha').innerHTML = re_alpha;
+	alphas = "abcdefghijklmnopqrstruvwxyz";
+	for( i = 0 ; i < alphas.length; i++)
+	{
+		temp = alphas.charAt(i);
+		if( document.getElementById(temp).style.cursor == "line-through" ){
+		document.getElementById(temp).style.textDecoration="";
+		document.getElementById(temp).style.cursor="pointer";
+		document.getElementById(temp).onclick='initial';
+		document.getElementById(temp).style.backgroundColor= "initial" ;
+		document.getElementById(temp).style.borderRadius="20%";
+	}
+	}
+	document.getElementById('alpha').style.display="block";
+	document.getElementById('restart').style.display="none";
+	document.getElementById('boxx').style.backgroundImage="";
+	rand();
+	count=0;
+	document.getElementById("mann").style.left='-' + count*75 +'px';	
+	win_check = 0;
+
+}
+
+
+//to do
+	//add movie name in final function //done	
+	//if win // done
+	//restart // done
+	//streamlining......
+	
+	</script>
+</html>
+
