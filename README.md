@@ -1,5 +1,5 @@
 #Hangman
-Visit <http://dewana-dewan.github.io/Hangman-Game>
+Visit <https://github.com/dewana-dewan/Hangman-Game>
 
 ##About
 Recreation of the Classic Hangman game with purely HTML, JavaScript and CSS.
