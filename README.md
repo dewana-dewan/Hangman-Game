@@ -12,7 +12,7 @@ Recreation of the Classic Hangman game with purely HTML, JavaScript and CSS.
 ##Created by
 Made for Web Development Competition held at IIIT Allahabad by team __"Wildcards"__   
 
-##Maintened by
+##Maintained by
 Aditya Dewan - [Github](https://github.com/dewana-dewan), [Facebook](https://www.facebook.com/profile.php?id=100001674125654)
 
 ##Contributions
